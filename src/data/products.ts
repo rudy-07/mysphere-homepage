@@ -13,6 +13,11 @@ export interface ProductStep {
   description: string;
 }
 
+export interface Platform {
+  name: string;
+  status: "Active" | "In Development" | "Planned";
+}
+
 export interface ProductData {
   slug: string;
   name: string;
@@ -22,10 +27,11 @@ export interface ProductData {
   status: "Active" | "In Development" | "Desktop App Available" | "Planned";
   statusColor: string;
   url?: string;
+  downloadUrl?: string;
   features: ProductFeature[];
   howItWorks: ProductStep[];
   integrations: string[];
-  platforms: string[];
+  platforms: Platform[];
 }
 
 export const productsData: Record<string, ProductData> = {
@@ -55,7 +61,12 @@ export const productsData: Record<string, ProductData> = {
       { step: 4, title: "Share Securely", description: "Generate secure links to share files with anyone." },
     ],
     integrations: ["myCam", "myLink"],
-    platforms: ["Desktop", "Web", "Android", "iOS"],
+    platforms: [
+      { name: "Web", status: "Active" },
+      { name: "Desktop", status: "In Development" },
+      { name: "Android", status: "Planned" },
+      { name: "iOS", status: "Planned" },
+    ],
   },
   mycam: {
     slug: "mycam",
@@ -81,7 +92,12 @@ export const productsData: Record<string, ProductData> = {
       { step: 4, title: "Get Alerts", description: "Receive motion detection notifications instantly." },
     ],
     integrations: ["myCloud", "myLink"],
-    platforms: ["Web", "Android"],
+    platforms: [
+      { name: "Web", status: "In Development" },
+      { name: "Android", status: "Planned" },
+      { name: "iOS", status: "Planned" },
+      { name: "Desktop", status: "Planned" },
+    ],
   },
   mytune: {
     slug: "mytune",
@@ -92,6 +108,7 @@ export const productsData: Record<string, ProductData> = {
     status: "Desktop App Available",
     statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
     url: "https://tune.mysphere.co.in",
+    downloadUrl: "#",
     features: [
       { icon: Music, title: "Music Streaming", description: "Stream music from online sources with high quality." },
       { icon: ListMusic, title: "Smart Queue", description: "Intelligent queue management that learns your preferences." },
@@ -107,7 +124,12 @@ export const productsData: Record<string, ProductData> = {
       { step: 4, title: "Enjoy", description: "Experience music with a cinematic, immersive interface." },
     ],
     integrations: ["myCloud", "myLink"],
-    platforms: ["Desktop", "Web"],
+    platforms: [
+      { name: "Desktop", status: "Active" },
+      { name: "Web", status: "In Development" },
+      { name: "Android", status: "Planned" },
+      { name: "iOS", status: "Planned" },
+    ],
   },
   mylink: {
     slug: "mylink",
@@ -133,7 +155,12 @@ export const productsData: Record<string, ProductData> = {
       { step: 4, title: "Stay Connected", description: "Never miss a notification while at your desk." },
     ],
     integrations: ["myCloud", "myCam", "myTune"],
-    platforms: ["Desktop", "Android"],
+    platforms: [
+      { name: "Web", status: "Planned" },
+      { name: "Desktop", status: "Planned" },
+      { name: "Android", status: "Planned" },
+      { name: "iOS", status: "Planned" },
+    ],
   },
   mymoney: {
     slug: "mymoney",
@@ -158,6 +185,10 @@ export const productsData: Record<string, ProductData> = {
       { step: 4, title: "Get Insights", description: "AI analyzes your habits and suggests improvements." },
     ],
     integrations: ["myCloud"],
-    platforms: ["Web", "Android", "iOS"],
+    platforms: [
+      { name: "Web", status: "Planned" },
+      { name: "Android", status: "Planned" },
+      { name: "iOS", status: "Planned" },
+    ],
   },
 };

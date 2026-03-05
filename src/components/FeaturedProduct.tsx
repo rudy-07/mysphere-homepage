@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Cloud, Upload, Share2, Search, Brain, Clock, Monitor, ArrowUpRight } from "lucide-react";
+import { Cloud, Upload, Share2, Search, Brain, Clock, Monitor, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   { icon: Monitor, text: "Turn any PC into your own cloud server" },
@@ -56,15 +57,24 @@ const FeaturedProduct = () => {
               ))}
             </div>
 
-            <a
-              href="https://cloud.mysphere.co.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
-            >
-              Open myCloud
-              <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://cloud.mysphere.co.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
+              >
+                Open myCloud
+                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <Link
+                to="/products/mycloud"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-primary/30 text-primary hover:bg-primary/10 font-semibold text-lg transition-all duration-300"
+              >
+                Know More
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>

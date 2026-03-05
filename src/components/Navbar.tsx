@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-6">
           {/* Products dropdown */}
           <div
-            className="relative"
+            className="relative inline-block"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -57,7 +57,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 glass-card p-2 rounded-xl"
+                  className="absolute left-1/2 top-full -translate-x-1/2 mt-2 w-56 glass-card p-2 rounded-xl"
                 >
                   {products.map((p) => (
                     <Link

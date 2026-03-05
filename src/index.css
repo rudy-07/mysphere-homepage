@@ -70,6 +70,33 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3A8DFF 0%, #6C5CE7 100%);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 15px -5px #3A8DFF;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-color: #3A8DFF transparent;
+    scrollbar-width: thin;
+  }
 }
 
 @layer components {

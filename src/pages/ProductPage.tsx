@@ -69,17 +69,28 @@ const ProductPage = () => {
               <p className="text-xl md:text-2xl text-muted-foreground font-light mb-2">{product.tagline}</p>
               <p className="text-base text-muted-foreground/70 max-w-xl mb-8 leading-relaxed">{product.description}</p>
 
-              {product.url && (
-                <a
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
-                >
-                  Open {product.name}
-                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              )}
+              <div className="flex flex-wrap gap-4">
+                {product.url && (
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
+                  >
+                    Open {product.name}
+                    <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
+                {product.downloadUrl && (
+                  <a
+                    href={product.downloadUrl}
+                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-primary/30 text-primary hover:bg-primary/10 font-semibold text-lg transition-all duration-300"
+                  >
+                    Download Desktop App
+                    <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -219,11 +230,19 @@ const ProductPage = () => {
 
           <div className="flex flex-wrap justify-center gap-6">
             {product.platforms.map((platform, i) => {
-              const pData = platformIcons[platform];
+              const platformName = typeof platform === 'string' ? platform : platform.name;
+              const platformStatus = typeof platform === 'string' ? undefined : platform.status;
+              const pData = platformIcons[platformName];
               if (!pData) return null;
+              
+              const statusColor = 
+                platformStatus === "Active" ? "bg-emerald-400/10 border-emerald-400/20 text-emerald-400" :
+                platformStatus === "In Development" ? "bg-yellow-400/10 border-yellow-400/20 text-yellow-400" :
+                "bg-muted/50 border-border text-muted-foreground";
+              
               return (
                 <motion.div
-                  key={platform}
+                  key={platformName}
                   className="glass-card px-8 py-6 flex flex-col items-center gap-3 hover-lift"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -232,6 +251,11 @@ const ProductPage = () => {
                 >
                   <pData.icon className="w-8 h-8 text-primary" />
                   <span className="text-sm font-medium text-foreground">{pData.label}</span>
+                  {platformStatus && (
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${statusColor}`}>
+                      {platformStatus}
+                    </span>
+                  )}
                 </motion.div>
               );
             })}
@@ -249,15 +273,26 @@ const ProductPage = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to try <span className="gradient-text">{product.name}</span>?
             </h2>
-            <a
-              href={product.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
-            >
-              Open {product.name}
-              <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href={product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
+              >
+                Open {product.name}
+                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              {product.downloadUrl && (
+                <a
+                  href={product.downloadUrl}
+                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-primary/30 text-primary hover:bg-primary/10 font-semibold text-lg transition-all duration-300"
+                >
+                  Download Desktop App
+                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              )}
+            </div>
           </motion.div>
         </section>
       )}
