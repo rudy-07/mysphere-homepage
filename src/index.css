@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 40% 7%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 35% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 35% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 214 100% 61%;
+    --primary-foreground: 220 40% 7%;
+
+    --secondary: 253 70% 64%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 30% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 253 70% 64%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 16%;
+    --input: 220 25% 16%;
+    --ring: 214 100% 61%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --navy: 220 40% 7%;
+    --navy-light: 220 35% 12%;
+    --electric-blue: 214 100% 61%;
+    --purple-accent: 253 70% 64%;
+    --glass-bg: 220 35% 10%;
+    --glass-border: 220 25% 18%;
+    --glow-blue: 214 100% 61%;
+    --glow-purple: 253 70% 64%;
+
+    --sidebar-background: 220 40% 7%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 214 100% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 253 70% 64%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 25% 16%;
+    --sidebar-ring: 214 100% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-glass-border rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 40px -10px hsl(var(--electric-blue) / 0.4);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px -10px hsl(var(--purple-accent) / 0.4);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px hsl(var(--electric-blue) / 0.2);
+  }
+}
