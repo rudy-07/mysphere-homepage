@@ -34,6 +34,10 @@ const ProductPage = () => {
     })
     .filter(Boolean);
 
+  // Temporarily hide "Open" actions for products that are not live yet.
+  const hideOpenButtonSlugs = ["mycam", "mytune", "mymoney", "mylink"];
+  const shouldShowOpenButton = Boolean(product.url) && !hideOpenButtonSlugs.includes(product.slug);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -70,7 +74,7 @@ const ProductPage = () => {
               <p className="text-base text-muted-foreground/70 max-w-xl mb-8 leading-relaxed">{product.description}</p>
 
               <div className="flex flex-wrap gap-4">
-                {product.url && (
+                {shouldShowOpenButton && (
                   <a
                     href={product.url}
                     target="_blank"
@@ -274,15 +278,21 @@ const ProductPage = () => {
               Ready to try <span className="gradient-text">{product.name}</span>?
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
-              >
-                Open {product.name}
-                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              {/*
+                Temporarily hidden for non-live products.
+                Re-enable by switching back to `product.url && (...)`.
+              */}
+              {shouldShowOpenButton && (
+                <a
+                  href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
+                >
+                  Open {product.name}
+                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              )}
               {product.downloadUrl && (
                 <a
                   href={product.downloadUrl}
