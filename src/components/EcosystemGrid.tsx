@@ -23,7 +23,7 @@ const products: ProductCard[] = [
     description: "A modern music streaming and playback experience with intelligent queue management and a cinematic interface.",
     highlights: ["Online music streaming", "Smart queue system", "Dynamic album artwork", "AI playlist suggestions"],
     slug: "mytune",
-    downloadUrl: "/myTune_exe_app/myTune.exe",
+    downloadUrl: "https://github.com/rudy-07/mysphere-homepage/releases/download/mytune-desktop-v1.0.0/myTune.exe",
     desktopLabel: "Windows Desktop App",
   },
   {

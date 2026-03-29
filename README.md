@@ -1,73 +1,157 @@
-# Welcome to your Lovable project
+# mySphere Website
 
-## Project info
+Official frontend website for the mySphere ecosystem, built with React, TypeScript, Vite, Tailwind CSS, and shadcn/ui components.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Overview
 
-## How can I edit this code?
+This project is the public-facing website for mySphere and its products:
 
-There are several ways of editing your application.
+- myCloud
+- myCam
+- myTune
+- myLink
+- myMoney
 
-**Use Lovable**
+The site includes:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- A branded landing page
+- Product detail pages using dynamic routing (`/products/:slug`)
+- An About page
+- A Not Found fallback page
+- Responsive, animated UI sections with Framer Motion
 
-Changes made via Lovable will be committed automatically to this repo.
+## Live Product Links
 
-**Use your preferred IDE**
+- myCloud: https://cloud.mysphere.co.in
+- myCam: https://cam.mysphere.co.in
+- myTune: https://tune.mysphere.co.in
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Note: Some products are listed as planned/in development and may have UI links intentionally hidden depending on status.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech Stack
 
-Follow these steps:
+- React 18 + TypeScript
+- Vite 7
+- Tailwind CSS 3
+- shadcn/ui + Radix UI primitives
+- React Router DOM 6
+- Framer Motion
+- TanStack Query
+- Vitest + Testing Library
+- ESLint
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Prerequisites
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Node.js 18+ (Node.js 20 LTS recommended)
+- npm 9+
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Installation
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open the local URL shown in terminal (usually `http://localhost:5173`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start Vite development server
+- `npm run build` - Create production build
+- `npm run build:dev` - Create development-mode build
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint across the project
+- `npm run test` - Run tests once with Vitest
+- `npm run test:watch` - Run Vitest in watch mode
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Routing
 
-## What technologies are used for this project?
+Configured in `src/App.tsx`:
 
-This project is built with:
+- `/` -> Home page (`src/pages/Index.tsx`)
+- `/products/:slug` -> Product page (`src/pages/ProductPage.tsx`)
+- `/about` -> About page (`src/pages/About.tsx`)
+- `*` -> Not Found page (`src/pages/NotFound.tsx`)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Project Structure
 
-## How can I deploy this project?
+```text
+.
+|- public/
+|  |- robots.txt
+|  `- myTune_exe_app/
+|- src/
+|  |- components/
+|  |  |- ui/
+|  |  `- (site sections and shared components)
+|  |- data/
+|  |  `- products.ts
+|  |- hooks/
+|  |- lib/
+|  |- pages/
+|  |  |- About.tsx
+|  |  |- Index.tsx
+|  |  |- NotFound.tsx
+|  |  `- ProductPage.tsx
+|  |- test/
+|  |- App.tsx
+|  `- main.tsx
+|- index.html
+`- package.json
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Product Data Source
 
-## Can I connect a custom domain to my Lovable project?
+Product metadata (name, slug, status, features, integrations, platform availability, and external URLs) is centralized in:
 
-Yes, you can!
+- `src/data/products.ts`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+If you want to add or update products, this is the first file to modify.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Testing
+
+Run all tests:
+
+```bash
+npm run test
+```
+
+Run tests in watch mode:
+
+```bash
+npm run test:watch
+```
+
+Test setup files are in `src/test/`.
+
+## Build and Preview
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Contributing
+
+1. Create a feature branch.
+2. Make focused changes.
+3. Run lint and tests before opening a PR:
+
+```bash
+npm run lint
+npm run test
+```

@@ -108,7 +108,7 @@ export const productsData: Record<string, ProductData> = {
     status: "Desktop App Available",
     statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
     url: "https://tune.mysphere.co.in",
-    downloadUrl: "/myTune_exe_app/myTune.exe",
+    downloadUrl: "https://github.com/rudy-07/mysphere-homepage/releases/download/mytune-desktop-v1.0.0/myTune.exe",
     features: [
       { icon: Music, title: "Music Streaming", description: "Stream music from online sources with high quality." },
       { icon: ListMusic, title: "Smart Queue", description: "Intelligent queue management that learns your preferences." },
